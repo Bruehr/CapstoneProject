@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arkansas Film & Actor Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+    header { background: #003366; color: white; padding: 1rem; text-align: center; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; }
+    .container { max-width: 1000px; margin: auto; padding: 1rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap: 1rem; }
+    .card { background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.1); overflow: hidden; }
+    .card img { width: 100%; display: block; }
+    .card h3 { margin: .5rem; font-size: 1rem; }
+    .card p { margin: .5rem; font-size: .9rem; color: #555; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Arkansas Film & Actor Explorer</h1>
+  <nav>
+    <a href="#films">Films</a>
+    <a href="#actors">Actors</a>
+  </nav>
+</header>
+
+<div class="container">
+  <!-- FILMS SECTION -->
+  <section id="films">
+    <h2>Films Connected to Arkansas</h2>
+    <div class="grid" id="film-list"></div>
+  </section>
+
+  <!-- ACTORS SECTION -->
+  <section id="actors">
+    <h2>Arkansas Actors & Actresses</h2>
+    <div class="grid" id="actor-list"></div>
+  </section>
+</div>
+
+<script>
+  const TMDB_KEY = "YOUR_TMDB_API_KEY"; // replace with your key
+
+  // Example curated list (add more from Encyclopedia of Arkansas)
+  const arkansasFilms = [
+    { id: 8840, title: "Sling Blade" },   // Billy Bob Thornton film
+    { id: 1830, title: "The Firm" }       // Filmed in AR
+  ];
+  const arkansasActors = [
+    { id: 23659, name: "Billy Bob Thornton" },
+    { id: 10297, name: "Mary Steenburgen" }
+  ];
+
+  // Fetch film details
+  async function loadFilms() {
+    const filmList = document.getElementById("film-list");
+    for (let film of arkansasFilms) {
+      const res = await fetch(`https://api.themoviedb.org/3/movie/${film.id}?api_key=${TMDB_KEY}&language=en-US`);
+      const data = await res.json();
+      filmList.innerHTML += `
+        <div class="card">
+          <img src="https://image.tmdb.org/t/p/w342${data.poster_path}" alt="${data.title}">
+          <h3>${data.title}</h3>
+          <p>${data.overview.substring(0,100)}...</p>
+          <p><a href="https://www.imdb.com/title/${data.imdb_id}" target="_blank">View on IMDB</a></p>
+        </div>
+      `;
+    }
+  }
+
+  // Fetch actor details
+  async function loadActors() {
+    const actorList = document.getElementById("actor-list");
+    for (let actor of arkansasActors) {
+      const res = await fetch(`https://api.themoviedb.org/3/person/${actor.id}?api_key=${TMDB_KEY}&language=en-US`);
+      const data = await res.json();
+      actorList.innerHTML += `
+        <div class="card">
+          <img src="https://image.tmdb.org/t/p/w342${data.profile_path}" alt="${data.name}">
+          <h3>${data.name}</h3>
+          <p>${data.biography.substring(0,100)}...</p>
+          <p><a href="https://www.imdb.com/name/${data.imdb_id}" target="_blank">View on IMDB</a></p>
+        </div>
+      `;
+    }
+  }
+
+  loadFilms();
+  loadActors();
+</script>
+
+<!-- Google Analytics snippet (replace with your Measurement ID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX');
+</script>
+</body>
+</html>
