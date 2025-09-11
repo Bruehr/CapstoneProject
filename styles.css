@@ -1,0 +1,35 @@
+/* #BF5E70 */ 
+header {
+    background-color:#BF5E70 ;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 30px;
+}
+
+footer {
+    background-color: #BF5E70;
+    text-align: center;
+}
+
+.container {
+  display: flex;
+  align-items: center; /* vertical alignment */
+  gap: 20px;            /* space between image and icons */
+  padding: 20px;
+}
+
+
+
+.icon-stack {
+  display: flex;
+  flex-direction: column; /* stacks icons vertically */
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 100%px;
+  height: 100%px;
+  margin: 10px 0;
+}
