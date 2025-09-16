@@ -9,8 +9,9 @@ header {
 }
 
 footer {
-    background-color: #BF5E70;
+    background-color: #8C0303;
     text-align: center;
+    color: white;
 }
 
 p {
@@ -27,23 +28,44 @@ p {
   list-style: none;
   display: flex;
   justify-content: center;
-  background-color: #8C0303;
+  gap: 1rem;            /* space between circles */
   padding: 1em;
   margin: 0;
+  background: none;     /* no full-width bar */
 }
 
-.navbar li {
-  margin: 0 1.5em;
-}
+.navbar li { margin: 0; }
 
 .navbar a {
+  display: inline-flex;         /* center content easily */
+  justify-content: center;
+  align-items: center;
+  width: 56px;                  /* equal width/height = circle */
+  height: 56px;
+  border-radius: 50%;
+  background-color: #8C0303;    /* filled circle */
   color: #fff;
   text-decoration: none;
-  font-size: 1.2rem;
-  transition: color 0.3s ease;
+  font-size: 0.95rem;           /* adjust for your content */
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
 .navbar a:hover {
-  color: #f0c040; /* golden highlight for Arkansas flair */
+  background-color: #A20404;
+  color: #f0c040;
+  transform: translateY(-1px);
 }
 
+.navbar a:focus {
+  outline: 2px solid gray;   /* keyboard-visible focus */
+  outline-offset: 3px;
+}
+
+
+h3 {
+  text-align: center;
+}
+
+body {
+  background-color: #BF5E70;
+}
