@@ -69,3 +69,23 @@ h3 {
 body {
   background-color: #BF5E70;
 }
+
+.search-container {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  margin: 20px 0;          /* adds spacing above/below */
+}
+
+.search-container input {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.search-container button {
+  padding: 8px 12px;
+  margin-left: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
