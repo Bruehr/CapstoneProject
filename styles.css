@@ -1,7 +1,7 @@
-/* #BF5E70 #8C0303 */ 
+/* #023373 #BF0B3B */ 
 header {
-    background-color:#BF5E70 ;
-    color: #8C0303;
+    background-color:#BF0B3B ;
+    color: #F2F2F2;
     height: 50px;
     line-height: 50px;
     text-align: center;
@@ -9,7 +9,7 @@ header {
 }
 
 footer {
-    background-color: #8C0303;
+    background-color: #BF0B3B;
     text-align: center;
     color: white;
 }
@@ -52,7 +52,7 @@ p {
 
 .navbar a:hover {
   background-color: #A20404;
-  color: #f0c040;
+  color: #023373;
   transform: translateY(-1px);
 }
 
@@ -67,7 +67,7 @@ h3 {
 }
 
 body {
-  background-color: #BF5E70;
+  background-color: #023373;
 }
 
 .search-container {
