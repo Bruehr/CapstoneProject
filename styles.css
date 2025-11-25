@@ -88,4 +88,95 @@ body {
   cursor: pointer;
 }
 
+.movie-list {
+  list-style-type: none;   /* remove bullets */
+  margin: 0;
+  padding: 0;
+  display: flex;           /* flexbox makes items line up horizontally */
+  gap: 20px;               /* space between posters */
+}
+
+.movie-list li img {
+  max-width: 150px;        /* optional: control poster size */
+  cursor: pointer;         /* makes it feel clickable */
+}
+
+/* Container for results */
+#movie-info, #actor-info {
+  background: #f9f9f9;       /* light background */
+  border: 1px solid #ddd;    /* subtle border */
+  border-radius: 8px;        /* rounded corners */
+  padding: 20px;
+  margin-top: 20px;
+  max-width: 800px;
+  font-family: Arial, sans-serif;
+}
+
+/* Headings */
+#movie-info h2, #actor-info h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.8em;
+}
+
+/* Poster / profile image */
+#movie-info img, #actor-info img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Paragraphs */
+#movie-info p, #actor-info p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+/* Links */
+#movie-info a, #actor-info a {
+  color: #0066cc;
+  text-decoration: none;
+}
+#movie-info a:hover, #actor-info a:hover {
+  text-decoration: underline;
+}
+
+/* Cast list */
+#movie-info ul, #actor-info ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+#movie-info li, #actor-info li {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  transition: background 0.2s;
+}
+
+#movie-info li:hover, #actor-info li:hover {
+  background: #f0f0f0;
+}
+
+/* Clear floats so text doesn't wrap awkwardly */
+#movie-info::after, #actor-info::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Center the results block itself */
+#movie-info, #actor-info {
+  margin: 20px auto;        /* auto left/right margins center the block */
+  max-width: 800px;         /* keep it from stretching too wide */
+  text-align: left;         /* keep text left-aligned inside */
+}
+
+#movie-info:empty, #actor-info:empty {
+  display: none;   /* hide if no content */
+}
 
