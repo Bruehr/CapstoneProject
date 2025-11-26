@@ -3,21 +3,18 @@ const movieSearchButton = document.getElementById("movie-search-button");
 const movieSearchInput = document.getElementById("movie-search-input");
 const movieInfoDiv = document.getElementById("movie-info");
 
-movieSearchButton.addEventListener("click", () => {
-  const query = movieSearchInput.value.trim();
+// Reusable function to run the movie search
+function runMovieSearch(query) {
   if (query) {
-    // Step 1: Search for movie
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`)
       .then(res => res.json())
       .then(data => {
         if (data.results && data.results.length > 0) {
           const movieId = data.results[0].id;
 
-          // Step 2: Get full movie details + credits
           fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&append_to_response=credits,external_ids`)
             .then(res => res.json())
             .then(movie => {
-              // Build HTML output
               movieInfoDiv.innerHTML = `
                 <h2>${movie.title} (${movie.release_date?.slice(0,4) || "N/A"})</h2>
                 <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title} poster">
@@ -54,4 +51,30 @@ movieSearchButton.addEventListener("click", () => {
         movieInfoDiv.innerHTML = "<p>Something went wrong. Try again later.</p>";
       });
   }
+}
+
+// Run search when clicking the button
+movieSearchButton.addEventListener("click", () => {
+  runMovieSearch(movieSearchInput.value.trim());
+});
+
+// Run search when clicking posters
+document.getElementById("slingblade").addEventListener("click", () => {
+  runMovieSearch("Sling Blade");
+});
+
+document.getElementById("chrystal").addEventListener("click", () => {
+  runMovieSearch("Chrystal");
+});
+
+document.getElementById("mud").addEventListener("click", () => {
+  runMovieSearch("Mud");
+});
+
+document.getElementById("american made").addEventListener("click", () => {
+  runMovieSearch("american made");
+});
+
+document.getElementById("true grit").addEventListener("click", () => {
+  runMovieSearch("true grit");
 });
