@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
 
-  <title>Document</title>
+  <title>Arkansas Film Showcase</title>
 </head>
 <header>Arkansas Film Showcase</header>
 <nav>
@@ -18,14 +19,54 @@
 
 
 <body>
- <div class="search-container">
+  <section class="actor-showcase">
+    <h1>Arkansas Actors</h1>
+    <ul class="actor-list">
+      <li>
+        <img id="billy-bob-thornton" src="resources/Billy Bob Thornton.webp" alt="Billy Bob Thornton Headshot" />
+        <p class="actor-name">Billy Bob Thornton</p>
+      </li>
+      <li>
+        <img id="mary-steenburgen" src="resources/mary-steenburgen.webp" alt="Mary Steenburgen Headshot" />
+        <p class="actor-name">Mary Steenburgen</p>
+      </li>
+      <li>
+        <img id="daniel-davis" src="resources/daniel-davis.webp" alt="Daniel Davis Headshot" />
+        <p class="actor-name">Daniel Davis</p>
+      </li>
+      <li>
+        <img id="joey-lauren-adams" src="resources/joey-lauren-adams.webp" alt="Joey Lauren Adams Headshot" />
+        <p class="actor-name">Joey Lauren Adams</p>
+      </li>
+      <li>
+        <img id="natalie-canerday" src="resources/natalie-canerday.webp" alt="Natalie Canerday Headshot" />
+        <p class="actor-name">Natalie Canerday</p>
+      </li>
+      <li>
+        <img id="rodger-bumpass" src="resources/rodger-bumpass.webp" alt="Rodger Bumpass Headshot" />
+        <p class="actor-name">Rodger Bumpass</p>
+      </li>
+      <li>
+        <img id="tess-harper" src="resources/tess-harper.webp" alt="Tess Harper Headshot" />
+        <p class="actor-name">Tess Harper</p>
+      </li>
+      <li>
+        <img id="wes-bentley" src="resources/wes-bentley.webp" alt="Wes Bentley Headshot" />
+        <p class="actor-name">Wes Bentley</p>
+      </li>
+    </ul>
+  </section>
+
+  <div class="search-container">
     <input type="text" id="actor-search-input" placeholder="Search for an actor...">
     <button id="actor-search-button">Search</button>
   </div>
   <div id="actor-info"></div>
 
+  <div id="actor-popup" class="popup"></div>
+
+
   <script src="actor-script.js"></script>
- 
 </body>
 <footer>
   Brian Ruehr &copy;2025

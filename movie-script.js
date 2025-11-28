@@ -71,10 +71,24 @@ document.getElementById("mud").addEventListener("click", () => {
   runMovieSearch("Mud");
 });
 
-document.getElementById("american made").addEventListener("click", () => {
-  runMovieSearch("american made");
+document.getElementById("americanMade").addEventListener("click", () => {
+  runMovieSearch("American Made");
 });
 
-document.getElementById("true grit").addEventListener("click", () => {
-  runMovieSearch("true grit");
+
+document.getElementById("trueGrit").addEventListener("click", () => {
+  runMovieSearch("True Grit");
 });
+
+document.getElementById("walkTheLine").addEventListener("click", () => {
+  runMovieSearch("Walk the Line");
+});
+
+document.getElementById("arkansas").addEventListener("click", () => {
+  runMovieSearch("arkansas");
+});
+
+document.getElementById("brubaker").addEventListener("click", () => {
+  runMovieSearch("brubaker");
+});
+
