@@ -259,10 +259,11 @@ body {
 }
 
 .actor-list img {
-  width: 100px;
-  border-radius: 8px;
-  cursor: pointer;
+  max-width: 100px;
+  height: auto;
+  object-fit: cover;
 }
+
 
 .actor-name {
   font-family: "Roboto Slab", serif;
@@ -272,21 +273,29 @@ body {
 }
 
 /* Popup */
-.popup {
-  position: absolute;
-  display: none;
+#actor-popup {
+  position: relative;     /* stays in normal flow under the search bar */
+  margin: 1rem auto;      /* centers horizontally */
+  width: 100%;            /* take full width of parent */
+  max-width: 600px;       /* cap width so it doesn’t get huge */
   background: #fff;
   border: 1px solid #333;
-  border-radius: 8px;
-  padding: 16px;
-  width: 600px;
-  max-width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-  z-index: 2000;
-  color: black;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  padding: 1rem;
+  display: none;          /* hidden until triggered */
+  border-radius: 4px;
 }
+#actor-popup img {
+  max-width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;    /* center the headshot inside popup */
+  border-radius: 4px;
+}
+#actor-popup h2 {
+  text-align: center;
+}
+
 
 /* Responsive tweaks */
 @media (max-width: 768px) {

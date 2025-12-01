@@ -1,10 +1,10 @@
 const apiKey = "486b484a7bdcc06e24947c85859e7e44";
 const actorSearchButton = document.getElementById("actor-search-button");
 const actorSearchInput = document.getElementById("actor-search-input");
-const actorPopup = document.getElementById("actor-popup"); // new popup container
+const actorPopup = document.getElementById("actor-popup"); // bottom popup container
 
 // Reusable function
-function runActorSearch(query, event) {
+function runActorSearch(query) {
   if (!query) return;
 
   // Step 1: Search for actor
@@ -19,6 +19,7 @@ function runActorSearch(query, event) {
           .then(res => res.json())
           .then(actor => {
             actorPopup.innerHTML = `
+              <button id="close-popup" style="float:right;">✖</button>
               <h2>${actor.name}</h2>
               ${actor.profile_path ? `<img src="https://image.tmdb.org/t/p/w200${actor.profile_path}" alt="${actor.name}" style="width:100%;border-radius:4px;">` : ""}
               <p><strong>Biography:</strong> ${actor.biography || "No biography available."}</p>
@@ -33,63 +34,52 @@ function runActorSearch(query, event) {
               </ul>
             `;
 
-            // Position popup at click location
-            if (event) {
-              actorPopup.style.left = event.pageX + "px";
-              actorPopup.style.top = event.pageY + "px";
-            }
             actorPopup.style.display = "block";
+
+            // Close button functionality
+            document.getElementById("close-popup").addEventListener("click", () => {
+              actorPopup.style.display = "none";
+            });
           });
       } else {
         actorPopup.innerHTML = "<p>No actor found.</p>";
-        actorPopup.style.left = event.pageX + "px";
-        actorPopup.style.top = event.pageY + "px";
         actorPopup.style.display = "block";
       }
     })
     .catch(error => {
       console.error("Error fetching actor data:", error);
       actorPopup.innerHTML = "<p>Something went wrong. Try again later.</p>";
-      actorPopup.style.left = event.pageX + "px";
-      actorPopup.style.top = event.pageY + "px";
       actorPopup.style.display = "block";
     });
 }
 
 // 🔎 Search button functionality
-actorSearchButton.addEventListener("click", (e) => {
-  runActorSearch(actorSearchInput.value.trim(), e);
+actorSearchButton.addEventListener("click", () => {
+  runActorSearch(actorSearchInput.value.trim());
 });
 
 // 🎭 Example: clickable headshots
-document.getElementById("billy-bob-thornton").addEventListener("click", (e) => {
-  runActorSearch("Billy Bob Thornton", e);
+document.getElementById("billy-bob-thornton").addEventListener("click", () => {
+  runActorSearch("Billy Bob Thornton");
 });
-document.getElementById("mary-steenburgen").addEventListener("click", (e) => {
-  runActorSearch("Mary Steenburgen", e);
+document.getElementById("mary-steenburgen").addEventListener("click", () => {
+  runActorSearch("Mary Steenburgen");
 });
-document.getElementById("daniel-davis").addEventListener("click", (e) => {
-  runActorSearch("Daniel Davis", e);
+document.getElementById("daniel-davis").addEventListener("click", () => {
+  runActorSearch("Daniel Davis");
 });
-document.getElementById("joey-lauren-adams").addEventListener("click", (e) => {
-  runActorSearch("Joey Lauren Adams", e);
+document.getElementById("joey-lauren-adams").addEventListener("click", () => {
+  runActorSearch("Joey Lauren Adams");
 });
-document.getElementById("natalie-canerday").addEventListener("click", (e) => {
-  runActorSearch("Natalie Canerday", e);
+document.getElementById("natalie-canerday").addEventListener("click", () => {
+  runActorSearch("Natalie Canerday");
 });
-document.getElementById("rodger-bumpass").addEventListener("click", (e) => {
-  runActorSearch("Rodger Bumpass", e);
+document.getElementById("rodger-bumpass").addEventListener("click", () => {
+  runActorSearch("Rodger Bumpass");
 });
-document.getElementById("tess-harper").addEventListener("click", (e) => {
-  runActorSearch("Tess Harper", e);
+document.getElementById("tess-harper").addEventListener("click", () => {
+  runActorSearch("Tess Harper");
 });
-document.getElementById("wes-bentley").addEventListener("click", (e) => {
-  runActorSearch("Wes Bentley", e);
-});
-
-// Hide popup when clicking outside
-window.addEventListener("click", (e) => {
-  if (!actorPopup.contains(e.target) && e.target.tagName !== "IMG") {
-    actorPopup.style.display = "none";
-  }
+document.getElementById("wes-bentley").addEventListener("click", () => {
+  runActorSearch("Wes Bentley");
 });
