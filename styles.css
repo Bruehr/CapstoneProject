@@ -1,89 +1,73 @@
-/* #023373 #BF0B3B */ 
+/* Base colors: #023373 #BF0B3B */
 header {
-    
-    color: #F2F2F2;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    font-size: 50px;
-}
-
-footer {    
-    text-align: center;
-    color: white;
-}
-
-
-header {
-  font-family: "Roboto Slab", serif;
-  font-weight: 700; /* bold for cinematic impact */
-  font-size: 2.5rem;
+  background-color: #BF0B3B;
+  color: #F2F2F2;
+  line-height: 1.2;
   text-align: center;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 2.5rem;
   margin: 20px 0;
+  padding: 10px;
+}
+
+footer {
+  text-align: center;
+  color: white;
+  padding: 1em;
 }
 
 nav {
   font-family: "Roboto Slab", serif;
-  font-weight: 400; /* lighter for readability */
+  font-weight: 400;
   font-size: 1.2rem;
 }
 
 p {
-  
-  width: 600px; /* or any value you want */
-  margin: 0 auto; /* centers it horizontally */
+  max-width: 600px;       /* flexible instead of fixed */
+  margin: 0 auto;
   text-align: center;
-  font-size: 20px;
-  margin-bottom: 1em; /* adds space after the paragraph */
-  margin-top: 3em;
-
-}
-
-p {
   font-family: "Roboto Slab", serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.6;
-  color: #000000; /* white text */
+  color: #000000;
+  margin-bottom: 1em;
+  margin-top: 3em;
 }
 
-
-
-.intro {
-   color: white;
+.click {
+  color: white;
 }
 
-
-h1{
-  color:white;
+.intro,
+h1 {
+  color: white;
 }
 
-
-
-
+/* Navbar */
 .navbar {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 1rem;            /* space between circles */
+  flex-wrap: wrap;        /* allow wrapping on small screens */
+  gap: 1rem;
   padding: 1em;
   margin: 0;
-  background: none;     /* no full-width bar */
+  background: none;
 }
 
-.navbar li { margin: 0; }
-
 .navbar a {
-  display: inline-flex;         /* center content easily */
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 56px;                  /* equal width/height = circle */
+  width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #8C0303;    /* filled circle */
+  background-color: #8C0303;
   color: #fff;
   text-decoration: none;
-  font-size: 0.95rem;           /* adjust for your content */
+  font-size: 0.95rem;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
@@ -94,29 +78,45 @@ h1{
 }
 
 .navbar a:focus {
-  outline: 2px solid gray;   /* keyboard-visible focus */
+  outline: 2px solid gray;
   outline-offset: 3px;
 }
 
+/* Slideshow */
 .slideshow-container {
   position: relative;
-  width: 400px;       /* adjust size */
-  height: 600px;      /* adjust size */
-  margin: 20px auto;  /* center on page */
+  width: 100%;
+  max-width: 500px;   /* cap width */
+  height: 700px;      /* consistent height */
+  margin: 20px auto;
   overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .slide {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;         /* hidden by default */
+  opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
-.slide.active {
-  opacity: 1;         /* show active image */
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* crop instead of stretch */
+  border-radius: 8px;
 }
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+
 
 
 h3 {
@@ -127,29 +127,26 @@ body {
   background-color: #023373;
 }
 
+/* Search */
 .search-container {
   display: flex;
-  justify-content: center; /* centers horizontally */
-  margin: 20px 0;          /* adds spacing above/below */
+  justify-content: center;
+  flex-wrap: wrap;        /* stack input + button on mobile */
+  margin: 20px 0;
 }
 
-.search-container input {
+.search-container input,
+.search-container button {
   padding: 8px;
   font-size: 1rem;
+  margin: 4px;
 }
 
-.search-container button {
-  padding: 8px 12px;
-  margin-left: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
+/* Movie grid */
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  grid-template-rows: repeat(2, auto);   /* 2 rows */
-  gap: 20px;                             /* spacing between items */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* responsive grid */
+  gap: 20px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -162,47 +159,46 @@ body {
 }
 
 .movie-list li img {
-  width: 150px;        /* consistent poster size */
-  height: 225px;       /* fixed height for uniformity */
-  object-fit: cover;   /* crops oversized images neatly */
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  object-fit: cover;
   cursor: pointer;
   border-radius: 6px;
 }
 
-
-/* Container for results */
+/* Results container */
 #movie-info, #actor-info {
-  background: #f9f9f9;       /* light background */
-  border: 1px solid #ddd;    /* subtle border */
-  border-radius: 8px;        /* rounded corners */
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   padding: 20px;
-  margin-top: 20px;
+  margin: 20px auto;
   max-width: 800px;
   font-family: Arial, sans-serif;
+  text-align: left;
 }
 
-/* Headings */
 #movie-info h2, #actor-info h2 {
   margin-top: 0;
   color: #333;
   font-size: 1.8em;
 }
 
-/* Poster / profile image */
 #movie-info img, #actor-info img {
   float: left;
   margin-right: 20px;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  max-width: 100%;
+  height: auto;
 }
 
-/* Paragraphs */
 #movie-info p, #actor-info p {
   margin: 6px 0;
   line-height: 1.4;
 }
 
-/* Links */
 #movie-info a, #actor-info a {
   color: #0066cc;
   text-decoration: none;
@@ -211,7 +207,6 @@ body {
   text-decoration: underline;
 }
 
-/* Cast list */
 #movie-info ul, #actor-info ul {
   list-style-type: none;
   padding: 0;
@@ -231,24 +226,17 @@ body {
   background: #f0f0f0;
 }
 
-/* Clear floats so text doesn't wrap awkwardly */
 #movie-info::after, #actor-info::after {
   content: "";
   display: block;
   clear: both;
 }
 
-/* Center the results block itself */
-#movie-info, #actor-info {
-  margin: 20px auto;        /* auto left/right margins center the block */
-  max-width: 800px;         /* keep it from stretching too wide */
-  text-align: left;         /* keep text left-aligned inside */
-}
-
 #movie-info:empty, #actor-info:empty {
-  display: none;   /* hide if no content */
+  display: none;
 }
 
+/* Actor showcase */
 .actor-showcase {
   text-align: center;
   margin: 40px 0;
@@ -260,16 +248,18 @@ body {
   flex-wrap: wrap;
   gap: 20px;
   padding: 0;
+  justify-content: center;
 }
 
 .actor-list li {
-  display: flex;          /* puts image + text in a row */
-  align-items: center;    /* vertically centers the text with the image */
-  gap: 10px;              /* space between image and name */
+  display: flex;
+  flex-direction: column; /* stack on mobile */
+  align-items: center;
+  gap: 10px;
 }
 
 .actor-list img {
-  width: 100px;           /* adjust headshot size */
+  width: 100px;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -278,9 +268,10 @@ body {
   font-family: "Roboto Slab", serif;
   font-weight: 700;
   color: white;
-  margin: 0;              /* removes default paragraph spacing */
+  margin: 0;
 }
 
+/* Popup */
 .popup {
   position: absolute;
   display: none;
@@ -288,12 +279,57 @@ body {
   border: 1px solid #333;
   border-radius: 8px;
   padding: 16px;
-  width: 600px;       /* set a fixed width */
-  max-width: 90%;     /* allow it to expand on larger screens */
-  max-height: 80vh;   /* prevent it from overflowing vertically */
-  overflow-y: auto;   /* scroll if content is too tall */
+  width: 600px;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
   box-shadow: 0 6px 12px rgba(0,0,0,0.3);
   z-index: 2000;
   color: black;
 }
 
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  header {
+    font-size: 2rem;
+    padding: 8px;
+  }
+
+  p {
+    width: 90%;
+    font-size: 0.95rem;
+  }
+
+  #movie-info, #actor-info {
+    padding: 12px;
+    max-width: 95%;
+  }
+
+  .movie-list {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    font-size: 1.5rem;
+  }
+
+  .navbar {
+    gap: 0.5rem;
+  }
+
+  .navbar a {
+    width: 44px;
+    height: 44px;
+    font-size: 0.8rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}
