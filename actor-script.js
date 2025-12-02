@@ -1,20 +1,20 @@
 const apiKey = "486b484a7bdcc06e24947c85859e7e44";
 const actorSearchButton = document.getElementById("actor-search-button");
 const actorSearchInput = document.getElementById("actor-search-input");
-const actorPopup = document.getElementById("actor-popup"); // bottom popup container
+const actorPopup = document.getElementById("actor-popup"); 
 
-// Reusable function
+
 function runActorSearch(query) {
   if (!query) return;
 
-  // Step 1: Search for actor
+  
   fetch(`https://api.themoviedb.org/3/search/person?api_key=${apiKey}&query=${encodeURIComponent(query)}`)
     .then(res => res.json())
     .then(data => {
       if (data.results && data.results.length > 0) {
         const actorId = data.results[0].id;
 
-        // Step 2: Get full actor details + credits
+        
         fetch(`https://api.themoviedb.org/3/person/${actorId}?api_key=${apiKey}&append_to_response=combined_credits,external_ids`)
           .then(res => res.json())
           .then(actor => {
@@ -36,7 +36,7 @@ function runActorSearch(query) {
 
             actorPopup.style.display = "block";
 
-            // Close button functionality
+            
             document.getElementById("close-popup").addEventListener("click", () => {
               actorPopup.style.display = "none";
             });
@@ -53,12 +53,12 @@ function runActorSearch(query) {
     });
 }
 
-// 🔎 Search button functionality
+
 actorSearchButton.addEventListener("click", () => {
   runActorSearch(actorSearchInput.value.trim());
 });
 
-// 🎭 Example: clickable headshots
+
 document.getElementById("billy-bob-thornton").addEventListener("click", () => {
   runActorSearch("Billy Bob Thornton");
 });

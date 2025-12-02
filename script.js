@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showSlide(currentIndex);
   }
 
-  // Start slideshow
+
   showSlide(currentIndex);
   setInterval(nextSlide, 3000); // change every 3 seconds
 });

@@ -3,7 +3,7 @@ const movieSearchButton = document.getElementById("movie-search-button");
 const movieSearchInput = document.getElementById("movie-search-input");
 const movieInfoDiv = document.getElementById("movie-info");
 
-// Reusable function to run the movie search
+
 function runMovieSearch(query) {
   if (query) {
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`)
@@ -53,12 +53,12 @@ function runMovieSearch(query) {
   }
 }
 
-// Run search when clicking the button
+
 movieSearchButton.addEventListener("click", () => {
   runMovieSearch(movieSearchInput.value.trim());
 });
 
-// Run search when clicking posters
+
 document.getElementById("slingblade").addEventListener("click", () => {
   runMovieSearch("Sling Blade");
 });
